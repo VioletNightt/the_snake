@@ -48,7 +48,7 @@ class GameObject():
         self.body_color = None
 
     def draw(self):
-        """Функция, отвечающая за отрисовку объекта. Будет переопределена у классов-наследников"""
+        """Функция, отвечающая за отрисовку объекта"""
         pass
 
 
@@ -68,7 +68,8 @@ class Apple(GameObject):
 
     def randomize_position(self):
         """Функция, возвращающая случайные координаты для позиции Яблока"""
-        return ((randint(0, GRID_WIDTH - 1) * GRID_SIZE), (randint(0, GRID_HEIGHT - 1) * GRID_SIZE))
+        return ((randint(0, GRID_WIDTH - 1) * GRID_SIZE),
+                (randint(0, GRID_HEIGHT - 1) * GRID_SIZE))
 
 
 class Snake(GameObject):
@@ -112,7 +113,8 @@ class Snake(GameObject):
         """Функция движения Змеи"""
         head_x, head_y = self.get_head_position()
         step_x, step_y = self.direction
-        new_pos = ((head_x + step_x) % SCREEN_WIDTH, (head_y + step_y) % SCREEN_HEIGHT)
+        new_pos = ((head_x + step_x) % SCREEN_WIDTH,
+                   (head_y + step_y) % SCREEN_HEIGHT)
         self.positions.insert(0, new_pos)
         if len(self.positions) == self.length:
             self.last = self.positions[-1]
