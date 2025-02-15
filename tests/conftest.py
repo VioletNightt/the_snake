@@ -4,7 +4,6 @@ from multiprocessing import Process
 from pathlib import Path
 from typing import Any
 
-from pygame.time import Clock
 import pytest
 import pytest_timeout
 
@@ -121,7 +120,7 @@ def loop_breaker_decorator(func):
 @pytest.fixture
 def modified_clock(_the_snake):
     class _Clock:
-        def __init__(self, clock_obj: Clock) -> None:
+        def __init__(self, clock_obj) -> None:
             self.clock = clock_obj
 
         @loop_breaker_decorator
