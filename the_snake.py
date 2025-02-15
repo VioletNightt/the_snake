@@ -44,9 +44,9 @@ clock = pg.time.Clock()
 class GameObject:
     """Класс-родитель, описывающий объекты игры"""
 
-    def __init__(self):
+    def __init__(self, body_color):
         self.position = SCREEN_CENTER
-        self.body_color = None
+        self.body_color = body_color
 
     def draw(self):
         """Функция, отвечающая за отрисовку объекта"""
@@ -57,8 +57,7 @@ class Apple(GameObject):
     """Класс-наследник, описывающий объект Яблоко"""
 
     def __init__(self, body_color=APPLE_COLOR, used_positions=SCREEN_CENTER):
-        super().__init__()
-        self.body_color = body_color
+        super().__init__(body_color)
         self.randomize_position(used_positions)
 
     def draw(self):
@@ -80,12 +79,12 @@ class Snake(GameObject):
     """Класс-наследник, описывающий объект Змея"""
 
     def __init__(self, body_color=SNAKE_COLOR):
-        super().__init__()
+        super().__init__(body_color)
         self.length = 1
         self.positions = [self.position]
         self.direction = RIGHT
         self.next_direction = None
-        self.body_color = body_color
+
         self.last = None
 
     def draw(self):
