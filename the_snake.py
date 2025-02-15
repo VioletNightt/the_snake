@@ -44,7 +44,7 @@ clock = pg.time.Clock()
 class GameObject:
     """Класс-родитель, описывающий объекты игры"""
 
-    def __init__(self, body_color):
+    def __init__(self, body_color=None):
         self.position = SCREEN_CENTER
         self.body_color = body_color
 
