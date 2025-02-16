@@ -56,7 +56,7 @@ class GameObject:
 class Apple(GameObject):
     """Класс-наследник, описывающий объект Яблоко"""
 
-    def __init__(self, body_color=APPLE_COLOR, used_positions=SCREEN_CENTER):
+    def __init__(self, body_color=APPLE_COLOR, used_positions=(SCREEN_CENTER)):
         super().__init__(body_color)
         self.randomize_position(used_positions)
 
@@ -159,10 +159,10 @@ def main():
         if snake.get_head_position() == apple.position:
             snake.length += 1
             apple.randomize_position(snake.positions)
-        if snake.get_head_position() in snake.positions[1:]:
+        elif snake.get_head_position() in snake.positions[1:]:
             snake.reset()
             screen.fill(BOARD_BACKGROUND_COLOR)
-            apple.randomize_position()
+            apple.randomize_position(snake.positions)
         apple.draw()
         snake.draw()
         pg.display.update()
